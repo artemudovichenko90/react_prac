@@ -13,14 +13,22 @@ class Counter extends Component {
   changeCurrentStep = (newStep) => {
     this.setState({ currentStep: newStep });
   }
+
+  incrementNum = () => {
+    this.setState((state, props) => ({ count: state.count + state.currentStep }));
+  };
+  decrementNum = () => {
+    this.setState((state, props) => ({ count: state.count - state.currentStep }));
+  };
+
   render() {
     const { currentStep, count } = this.state;
     return (
       <div>
         <p>Count: {count}</p>
         <p>Step: {currentStep}</p>
-        <CounterLogic step={1} />
-        <Input changeCurrentStep={this.changeCurrentStep}/>
+        <CounterLogic incrementNum={this.incrementNum} decrementNum={this.decrementNum} />
+        <Input changeCurrentStep={this.changeCurrentStep} />
       </div>
     );
   }

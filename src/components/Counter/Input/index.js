@@ -14,7 +14,7 @@ class Input extends Component {
   sendInput = () => {
     const { inputValue } = this.state;
     const { changeCurrentStep } = this.props;
-    changeCurrentStep(inputValue);
+    changeCurrentStep(Number(inputValue));
   };
   render() {
     const { inputValue } = this.state;
