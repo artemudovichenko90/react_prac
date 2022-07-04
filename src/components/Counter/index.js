@@ -1,34 +1,31 @@
 import React, { Component } from "react";
 import CounterLogic from "./CounterLogic";
-import Input from "./Input";
+import CounterInput from "./CounterInput";
 
 class Counter extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentStep: 1, count: 0
+      step: 1, counter: 0
     };
   }
-
-  changeCurrentStep = (newStep) => {
-    this.setState({ currentStep: newStep });
+  changeStep = (newStep) => {
+    this.setState({ step: newStep });
   }
-
-  incrementNum = () => {
-    this.setState((state, props) => ({ count: state.count + state.currentStep }));
+  addCounter = () => {
+    this.setState(state => ({ counter: state.counter + state.step }));
   };
-  decrementNum = () => {
-    this.setState((state, props) => ({ count: state.count - state.currentStep }));
+  subCounter = () => {
+    this.setState(state => ({ counter: state.counter - state.step }));
   };
-
   render() {
-    const { currentStep, count } = this.state;
+    const { step, counter } = this.state;
     return (
       <div>
-        <p>Count: {count}</p>
-        <p>Step: {currentStep}</p>
-        <CounterLogic incrementNum={this.incrementNum} decrementNum={this.decrementNum} />
-        <Input changeCurrentStep={this.changeCurrentStep} />
+        <p>COUNTER: {counter}</p>
+        <p>Step: {step}</p>
+        <CounterLogic addCounter={this.addCounter} subCounter={this.subCounter} />
+        <CounterInput changeStep={this.changeStep} />
       </div>
     );
   }

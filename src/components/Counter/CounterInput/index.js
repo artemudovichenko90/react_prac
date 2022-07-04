@@ -1,24 +1,22 @@
 import React, { Component } from "react";
 
-class Input extends Component {
+class CounterInput extends Component {
   constructor(props) {
     super(props);
     this.state = { inputValue: 0 };
   }
-  handleChange = (e) => {
-    const { name, value } = e.target
+  handleChange = ({ target: { name, value } }) => {
     this.setState({
       [name]: value,
     });
   };
   sendInput = () => {
     const { inputValue } = this.state;
-    const { changeCurrentStep } = this.props;
-    changeCurrentStep(Number(inputValue));
+    const { changeStep } = this.props;
+    changeStep(Number(inputValue));
   };
   render() {
     const { inputValue } = this.state;
-
     return (
       <div>
         <input
@@ -32,4 +30,4 @@ class Input extends Component {
     );
   }
 }
-export default Input;
+export default CounterInput;
